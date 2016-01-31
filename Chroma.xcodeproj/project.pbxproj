@@ -279,6 +279,7 @@
 				D4171B7A1C5EBAB900718899 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
