@@ -12,14 +12,16 @@ public class ImageAnalyzer {
     
     public let image: UIImage
     public let colors: Array<UIColor>
+    public let backgroundColor: UIColor
     
     public init(image: UIImage) {
         self.image = image
-        self.colors = ImageAnalyzer.colorsFor(image: image)
+        self.colors = ImageAnalyzer.colorsFor(image: self.image)
+        self.backgroundColor = ImageAnalyzer.backgroundColorFor(colors: self.colors)
     }
     
     private static func colorsFor(image image: UIImage) -> Array<UIColor> {
-        var colors: Array<UIColor> = []
+        var colors = [UIColor]()
         
         let pixelData = CGDataProviderCopyData(CGImageGetDataProvider(image.CGImage))
         let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
@@ -39,6 +41,24 @@ public class ImageAnalyzer {
         }
         
         return colors
+    }
+    
+    private static func backgroundColorFor(colors colors: Array<UIColor>) -> UIColor {
+        var colorCounts = [UIColor: Int]()
+        
+        for color in colors {
+            if let colorCount = colorCounts[color] {
+                colorCounts[color] = colorCount + 1
+            } else {
+                colorCounts[color] = 1
+            }
+        }
+        
+        let sortedColors = colorCounts.keys.sort {
+            return colorCounts[$0] > colorCounts[$1]
+        }
+        
+        return sortedColors.first!
     }
     
 }
