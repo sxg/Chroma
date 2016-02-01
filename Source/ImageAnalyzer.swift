@@ -27,14 +27,14 @@ public class ImageAnalyzer {
         let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
         
         for x in 0..<Int(image.size.width) {
-            for y in 0..<Int(image.size.height) {
+            for y in 0..<1 {//<Int(image.size.height) {
                 
                 let pixel: Int = ((Int(image.size.width) * y) + x) * 4
                 
-                let r = CGFloat(data[pixel]) / CGFloat(255.0)
-                let g = CGFloat(data[pixel + 1]) / CGFloat(255.0)
-                let b = CGFloat(data[pixel + 2]) / CGFloat(255.0)
-                let a = CGFloat(data[pixel + 3]) / CGFloat(255.0)
+                let r = round(100 * CGFloat(data[pixel]) / CGFloat(255.0)) / 100
+                let g = round(100 * CGFloat(data[pixel + 1]) / CGFloat(255.0)) / 100
+                let b = round(100 * CGFloat(data[pixel + 2]) / CGFloat(255.0)) / 100
+                let a = round (100 * CGFloat(data[pixel + 3]) / CGFloat(255.0)) / 100
 
                 colors.append(UIColor(red: r, green: g, blue: b, alpha: a))
             }
@@ -58,7 +58,31 @@ public class ImageAnalyzer {
             return colorCounts[$0] > colorCounts[$1]
         }
         
-        return sortedColors.first!
+        var backgroundColor = sortedColors.first!
+        for color in sortedColors {
+            if ImageAnalyzer.isBlackOrWhite(color: backgroundColor) {
+                if Float(colorCounts[backgroundColor]!) / Float(colorCounts[color]!) > 0.3 && !ImageAnalyzer.isBlackOrWhite(color: color) {
+                    backgroundColor = color
+                    break
+                }
+            }
+        }
+        
+        return backgroundColor
+    }
+    
+    private static func isBlackOrWhite(color color: UIColor) -> Bool {
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
+        color.getRed(&r, green: &g, blue: &b, alpha: &a)
+        
+        if (r > 0.91 && g > 0.91 && b > 0.91) || (r < 0.09 && g < 0.09 && b < 0.09) {
+            return true
+        } else {
+            return false
+        }
     }
     
 }

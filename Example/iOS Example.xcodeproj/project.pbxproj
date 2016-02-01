@@ -12,6 +12,7 @@
 		D4171B911C5EC7A300718899 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4171B8F1C5EC7A300718899 /* Main.storyboard */; };
 		D4171B931C5EC7A300718899 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4171B921C5EC7A300718899 /* Assets.xcassets */; };
 		D4171B961C5EC7A300718899 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4171B941C5EC7A300718899 /* LaunchScreen.storyboard */; };
+		D444B72B1C5ED13F00D5ECC7 /* Chroma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4171BA21C5EC7C800718899 /* Chroma.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D444B72B1C5ED13F00D5ECC7 /* Chroma.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,9 +51,9 @@
 		D4171B7F1C5EC7A300718899 = {
 			isa = PBXGroup;
 			children = (
-				D4171B9D1C5EC7C800718899 /* Chroma.xcodeproj */,
 				D4171B8A1C5EC7A300718899 /* iOS Example */,
 				D4171B891C5EC7A300718899 /* Products */,
+				D4171B9D1C5EC7C800718899 /* Chroma.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
