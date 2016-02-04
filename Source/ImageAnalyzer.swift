@@ -85,4 +85,18 @@ public class ImageAnalyzer {
         }
     }
     
+    private static func isDark(color color: UIColor) -> Bool {
+        return luminance(color: color) < 0.5 ? true : false
+    }
+    
+    private static func luminance(color color: UIColor) -> Float {
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
+        color.getRed(&r, green: &g, blue: &b, alpha: &a)
+        
+        return Float(0.2126 * r + 0.7152 * g + 0.0722 * b)
+    }
+    
 }
