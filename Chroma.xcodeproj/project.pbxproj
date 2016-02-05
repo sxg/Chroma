@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		D4171B7E1C5EBF2C00718899 /* ImageAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4171B7D1C5EBF2C00718899 /* ImageAnalyzer.swift */; };
+		D42A81B11C64536100FCC829 /* UIColor+Chroma.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42A81B01C64536100FCC829 /* UIColor+Chroma.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D4171B701C5EBAB900718899 /* Chroma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Chroma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4171B751C5EBAB900718899 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4171B7D1C5EBF2C00718899 /* ImageAnalyzer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAnalyzer.swift; sourceTree = "<group>"; };
+		D42A81B01C64536100FCC829 /* UIColor+Chroma.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Chroma.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +50,7 @@
 			children = (
 				D4171B751C5EBAB900718899 /* Info.plist */,
 				D4171B7D1C5EBF2C00718899 /* ImageAnalyzer.swift */,
+				D42A81B01C64536100FCC829 /* UIColor+Chroma.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -130,6 +133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4171B7E1C5EBF2C00718899 /* ImageAnalyzer.swift in Sources */,
+				D42A81B11C64536100FCC829 /* UIColor+Chroma.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

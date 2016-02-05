@@ -60,8 +60,8 @@ public class ImageAnalyzer {
         
         var backgroundColor = sortedColors.first!
         for color in sortedColors {
-            if ImageAnalyzer.isBlackOrWhite(color: backgroundColor) {
-                if Float(colorCounts[backgroundColor]!) / Float(colorCounts[color]!) > 0.3 && !ImageAnalyzer.isBlackOrWhite(color: color) {
+            if backgroundColor.isBlackOrWhite() {
+                if Float(colorCounts[backgroundColor]!) / Float(colorCounts[color]!) > 0.3 && !color.isBlackOrWhite() {
                     backgroundColor = color
                     break
                 }
@@ -71,32 +71,9 @@ public class ImageAnalyzer {
         return backgroundColor
     }
     
-    private static func isBlackOrWhite(color color: UIColor) -> Bool {
-        var r: CGFloat = 0
-        var g: CGFloat = 0
-        var b: CGFloat = 0
-        var a: CGFloat = 0
-        color.getRed(&r, green: &g, blue: &b, alpha: &a)
+    private static func textColorsFor(colors colors: Array<UIColor>, backgroundColor: UIColor) -> UIColor {
+        let findDark = !backgroundColor.isDark()
         
-        if (r > 0.91 && g > 0.91 && b > 0.91) || (r < 0.09 && g < 0.09 && b < 0.09) {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    private static func isDark(color color: UIColor) -> Bool {
-        return luminance(color: color) < 0.5 ? true : false
-    }
-    
-    private static func luminance(color color: UIColor) -> Float {
-        var r: CGFloat = 0
-        var g: CGFloat = 0
-        var b: CGFloat = 0
-        var a: CGFloat = 0
-        color.getRed(&r, green: &g, blue: &b, alpha: &a)
-        
-        return Float(0.2126 * r + 0.7152 * g + 0.0722 * b)
     }
     
 }
