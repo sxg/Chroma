@@ -78,4 +78,30 @@ extension UIColor {
         }
     }
     
+    public func isContrasting(on backgroundColor: UIColor) -> Bool {
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
+        var ro: CGFloat = 0
+        var go: CGFloat = 0
+        var bo: CGFloat = 0
+        var ao: CGFloat = 0
+        
+        self.getRed(&r, green: &g, blue: &b, alpha: &a)
+        backgroundColor.getRed(&ro, green: &go, blue: &bo, alpha: &ao)
+        
+        let colorLuminance = self.luminance()
+        let backgroundLuminance = backgroundColor.luminance()
+        
+        var contrast: Float = 0
+        if backgroundLuminance > colorLuminance {
+            contrast = (backgroundLuminance + 0.05) / (colorLuminance + 0.05)
+        } else {
+            contrast = (colorLuminance + 0.05) / (backgroundLuminance + 0.05)
+        }
+        
+        return contrast > 1.6
+    }
+    
 }
