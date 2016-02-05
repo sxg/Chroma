@@ -10,6 +10,15 @@ import UIKit
 
 extension UIColor {
     
+    public convenience init(fromColor color: UIColor, saturation: Float) {
+        var h: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
+        color.getHue(&h, saturation: nil, brightness: &b, alpha: &a)
+        
+        self.init(hue: h, saturation: CGFloat(saturation), brightness: b, alpha: a)
+    }
+    
     public func isBlackOrWhite() -> Bool {
         var r: CGFloat = 0
         var g: CGFloat = 0
