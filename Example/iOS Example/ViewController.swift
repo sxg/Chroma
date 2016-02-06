@@ -18,8 +18,9 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         let image = UIImage(named: "Image")!
-        let backgroundColor = ImageAnalyzer(image: image).backgroundColor
-        print(backgroundColor)
+        let imageAnalyzer = ImageAnalyzer(image: image)
+        print(imageAnalyzer.backgroundColor)
+        print(imageAnalyzer.textColors)
     }
     
     override func didReceiveMemoryWarning() {
